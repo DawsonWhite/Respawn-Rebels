@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlfr1ql4kt2a4"]
+
+[ext_resource type="Texture2D" uid="uid://bstphlto74x5f" path="res://assets/Units/Blue Units/Archer/Archer_Idle.png" id="1_idfsr"]
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_uvkgs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81hxa"]
+radius = 14.0357
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_uvkgs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_idfsr")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_81hxa")
