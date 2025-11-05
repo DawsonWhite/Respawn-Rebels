@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 const SPEED : int = 200
 var direction : Vector2
 
