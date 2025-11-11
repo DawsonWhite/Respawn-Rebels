@@ -14,3 +14,7 @@ texture = ExtResource("1_7b2as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lshks")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 34.0
+affect_navigation_mesh = true
