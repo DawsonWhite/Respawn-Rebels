@@ -10,7 +10,7 @@
 vertices = PackedVector2Array(462.422, 270.18, 468.352, 248, 614, 26, 614, 934, 538, 630, 462.422, 225.82, 196.352, 744, 422, 630, 422, 842, 190.422, 766.18, 282, 266, 379.648, 248, 385.578, 270.18, 266, 282, 230, 374, 230, 575.391, 216, 571.648, 190.422, 721.82, 330, 666, 282, 182, 385.578, 225.82, 446.18, 209.578, 26, 26, 424, 203.648, 401.82, 209.578, 266, 166, 522, 630, 522, 614, 468.352, 552, 462.422, 529.82, 462.422, 574.18, 438, 614, 446.18, 590.422, 424, 596.352, 438, 630, 346, 374, 330, 374, 330, 358, 401.82, 286.422, 424, 292.352, 218, 330, 246, 358, 246, 374, 202, 346, 202, 330, 242.602, 650, 246, 650, 246, 666, 238.18, 654.422, 330, 650, 346, 650, 438, 842, 438, 858, 26, 934, 522, 858, 522, 842, 538, 842, 174.18, 782.422, 152, 788.352, 129.82, 782.422, 266, 182, 118, 166, 118, 182, 102, 182, 102, 330, 118, 330, 118, 346, 218, 282, 266, 266, 113.578, 766.18, 401.82, 590.422, 385.578, 574.18, 193.82, 577.578, 216, 660.352, 379.648, 552, 385.578, 529.82, 401.82, 513.578, 424, 507.648, 446.18, 286.422, 446.18, 513.578, 107.648, 744, 113.578, 721.82, 129.82, 705.578, 152, 699.648, 174.18, 705.578, 177.578, 593.82, 171.648, 616, 193.82, 654.422, 177.578, 638.18)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 1, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16), PackedInt32Array(7, 6, 17, 18), PackedInt32Array(11, 10, 19, 20), PackedInt32Array(2, 5, 21), PackedInt32Array(22, 2, 21, 23), PackedInt32Array(22, 23, 24), PackedInt32Array(22, 24, 20, 25), PackedInt32Array(4, 26, 27), PackedInt32Array(0, 4, 27, 28, 29), PackedInt32Array(30, 28, 27), PackedInt32Array(30, 27, 31, 32), PackedInt32Array(33, 32, 31, 7), PackedInt32Array(31, 34, 7), PackedInt32Array(35, 36, 37, 38, 39), PackedInt32Array(40, 41, 42, 14, 43, 44), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(18, 49, 50), PackedInt32Array(8, 51, 52, 53), PackedInt32Array(54, 55, 56, 3), PackedInt32Array(54, 3, 53, 52), PackedInt32Array(9, 8, 53, 57), PackedInt32Array(58, 57, 53), PackedInt32Array(59, 58, 53), PackedInt32Array(19, 60, 25), PackedInt32Array(61, 62, 63, 22), PackedInt32Array(64, 65, 66), PackedInt32Array(40, 67, 13, 38, 37, 41), PackedInt32Array(13, 68, 10), PackedInt32Array(69, 59, 53), PackedInt32Array(70, 33, 7, 50), PackedInt32Array(71, 70, 50), PackedInt32Array(43, 14, 16, 72, 66), PackedInt32Array(73, 48, 47, 17), PackedInt32Array(13, 12, 38), PackedInt32Array(74, 71, 50), PackedInt32Array(74, 50, 35, 75), PackedInt32Array(76, 75, 35), PackedInt32Array(77, 76, 35), PackedInt32Array(78, 79, 77, 35, 39), PackedInt32Array(80, 69, 53), PackedInt32Array(80, 53, 22, 81), PackedInt32Array(82, 81, 22), PackedInt32Array(83, 82, 22), PackedInt32Array(84, 83, 22), PackedInt32Array(3, 56, 4), PackedInt32Array(0, 29, 79, 78), PackedInt32Array(66, 72, 85, 64), PackedInt32Array(17, 84, 22, 64, 86), PackedInt32Array(64, 85, 86), PackedInt32Array(18, 50, 7), PackedInt32Array(47, 18, 17), PackedInt32Array(87, 73, 17), PackedInt32Array(88, 87, 17), PackedInt32Array(20, 19, 25), PackedInt32Array(22, 25, 61), PackedInt32Array(22, 63, 64), PackedInt32Array(17, 86, 88)])
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" groups=["MainScene"]]
 
 [node name="WaterBackgroundColor" type="Sprite2D" parent="."]
 position = Vector2(320, 480)
@@ -30,5 +30,9 @@ tile_map_data = PackedByteArray("AAAaACIAAAAAAAAAAQAaAA8AAAAAAAAAAQAJAC4AAAAAAAA
 [node name="Player" parent="." instance=ExtResource("3_xwsv7")]
 position = Vector2(296, 752)
 
-[node name="Basicmelee" parent="." instance=ExtResource("5_w5jmw")]
+[node name="ArrowHolder" type="Node2D" parent="."]
+
+[node name="EnemyHolder" type="Node2D" parent="."]
+
+[node name="Basicmelee" parent="EnemyHolder" instance=ExtResource("5_w5jmw")]
 position = Vector2(512, 96)

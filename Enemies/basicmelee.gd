@@ -43,8 +43,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		ani_player.play("attack")
 
-
-
-
 func _on_timer_timeout() -> void:
 	ani_player.play("run")
