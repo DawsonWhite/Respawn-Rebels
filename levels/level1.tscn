@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://cxtyly5k1ya1c"]
+[gd_scene load_steps=11 format=4 uid="uid://cxtyly5k1ya1c"]
 
 [ext_resource type="Texture2D" uid="uid://dwgnt5tccento" path="res://assets/Terrain/Water Background color.png" id="1_20goj"]
 [ext_resource type="PackedScene" uid="uid://4d82vvm0gayn" path="res://prefabs/level_map.tscn" id="2_b0nwj"]
 [ext_resource type="PackedScene" uid="uid://bxs2voynp1wb7" path="res://prefabs/world_objects.tscn" id="3_qm3gc"]
 [ext_resource type="PackedScene" uid="uid://dlfr1ql4kt2a4" path="res://Characters/player.tscn" id="3_xwsv7"]
 [ext_resource type="PackedScene" uid="uid://bkpmstqjpnyat" path="res://Enemies/basicmelee.tscn" id="5_w5jmw"]
+[ext_resource type="PackedScene" uid="uid://dquq4uaiq5mov" path="res://Items/bison_steak.tscn" id="6_pdpul"]
+[ext_resource type="PackedScene" uid="uid://cs0ff1auhbdpw" path="res://Items/magic_mushroom.tscn" id="7_8hd6v"]
+[ext_resource type="PackedScene" uid="uid://cfqkasvjujbgs" path="res://Items/jet_fuel.tscn" id="8_omn1t"]
+[ext_resource type="PackedScene" uid="uid://1b8f3qjgfq26" path="res://Items/soldier_syringe.tscn" id="9_lf3p4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_np1u8"]
 vertices = PackedVector2Array(462.422, 270.18, 468.352, 248, 614, 26, 614, 934, 538, 630, 462.422, 225.82, 196.352, 744, 422, 630, 422, 842, 190.422, 766.18, 282, 266, 379.648, 248, 385.578, 270.18, 266, 282, 230, 374, 230, 575.391, 216, 571.648, 190.422, 721.82, 330, 666, 282, 182, 385.578, 225.82, 446.18, 209.578, 26, 26, 424, 203.648, 401.82, 209.578, 266, 166, 522, 630, 522, 614, 468.352, 552, 462.422, 529.82, 462.422, 574.18, 438, 614, 446.18, 590.422, 424, 596.352, 438, 630, 346, 374, 330, 374, 330, 358, 401.82, 286.422, 424, 292.352, 218, 330, 246, 358, 246, 374, 202, 346, 202, 330, 242.602, 650, 246, 650, 246, 666, 238.18, 654.422, 330, 650, 346, 650, 438, 842, 438, 858, 26, 934, 522, 858, 522, 842, 538, 842, 174.18, 782.422, 152, 788.352, 129.82, 782.422, 266, 182, 118, 166, 118, 182, 102, 182, 102, 330, 118, 330, 118, 346, 218, 282, 266, 266, 113.578, 766.18, 401.82, 590.422, 385.578, 574.18, 193.82, 577.578, 216, 660.352, 379.648, 552, 385.578, 529.82, 401.82, 513.578, 424, 507.648, 446.18, 286.422, 446.18, 513.578, 107.648, 744, 113.578, 721.82, 129.82, 705.578, 152, 699.648, 174.18, 705.578, 177.578, 593.82, 171.648, 616, 193.82, 654.422, 177.578, 638.18)
@@ -27,8 +31,11 @@ navigation_enabled = false
 [node name="WorldObjects" parent="NavigationRegion2D" instance=ExtResource("3_qm3gc")]
 tile_map_data = PackedByteArray("AAAaACIAAAAAAAAAAQAaAA8AAAAAAAAAAQAJAC4AAAAAAAAAAQANACYAAAAAAAAAAQA=")
 
-[node name="Player" parent="." instance=ExtResource("3_xwsv7")]
+[node name="Player3" parent="." instance=ExtResource("3_xwsv7")]
 position = Vector2(296, 752)
+
+[node name="BisonSteak" parent="." instance=ExtResource("6_pdpul")]
+position = Vector2(121, 487)
 
 [node name="ArrowHolder" type="Node2D" parent="."]
 
@@ -36,3 +43,12 @@ position = Vector2(296, 752)
 
 [node name="Basicmelee" parent="EnemyHolder" instance=ExtResource("5_w5jmw")]
 position = Vector2(512, 96)
+
+[node name="MagicMushroom" parent="." instance=ExtResource("7_8hd6v")]
+position = Vector2(170, 65)
+
+[node name="JetFuel" parent="." instance=ExtResource("8_omn1t")]
+position = Vector2(542, 350)
+
+[node name="SoldierSyringe" parent="." instance=ExtResource("9_lf3p4")]
+position = Vector2(569, 589)

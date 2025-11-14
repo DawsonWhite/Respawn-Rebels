@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://1b8f3qjgfq26"]
+
+[ext_resource type="Script" uid="uid://1805tfhvjui0" path="res://Items/soldier_syringe.gd" id="1_haoxx"]
+[ext_resource type="Texture2D" uid="uid://ct4lwt72xds1t" path="res://assets/Items/Soldier's Syringe.png" id="2_8l0rx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s2qy"]
+atlas = ExtResource("2_8l0rx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kr5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s2qy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i8s0"]
+size = Vector2(25, 24)
+
+[node name="SoldierSyringe" type="Area2D"]
+script = ExtResource("1_haoxx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8kr5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_5i8s0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

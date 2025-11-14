@@ -21,7 +21,7 @@ func _ready() -> void:
 	player_ref = get_tree().get_first_node_in_group("Player")
 	ani_player.play("run")
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if current_state == STATE.RUN:
 		nav_agent.target_position = player_ref.position
 		velocity = position.direction_to(nav_agent.get_next_path_position()) * SPEED
