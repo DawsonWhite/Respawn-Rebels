@@ -9,6 +9,9 @@ var bullet_path = preload("res://prefabs/Arrow/shoot.tscn")
 @onready var sprite := $AnimatedSprite2D
 @onready var ani_player := $AnimationPlayer
 @onready var attack_timer := $AttackTimer
+@export var invincible_time: float = 0.5
+var invincible: bool = false
+@onready var inv_timer: Timer = $InvincibilityTimer if has_node("InvincibilityTimer") else null
 
 const SPEED : int = 300
 var max_health: float = 100
@@ -18,8 +21,10 @@ var movement_speed: float = 1
 var direction : Vector2
 var facing_right : bool = true
 @export var can_attack := true
-
+@export var respawn_position: Vector2
+@export var respawn_time: float = 2.0
 @export var arrow_scene_string : String
+var dead := false
 var arrow_scene : Resource
 var current_scene : Node2D
 
@@ -60,6 +65,46 @@ func fire():
 	bullet.rota = bullet.dir
 	bullet.damage = damage_output
 	get_parent().add_child(bullet)
+
+func take_damage(amount: float, from_position: Vector2 = Vector2.INF) -> void:
+	if invincible:
+		return
+
+	current_health -= int(amount)
+	print("Player took ", amount, " damage. HP:", current_health)
+	invincible = true
+	if inv_timer:
+		inv_timer.start(invincible_time)
+	else:
+		await get_tree().create_timer(invincible_time).timeout
+		invincible = false
+
+	if current_health <= 0:
+		die()
+func die() -> void:
+	if dead:
+		return
+	dead = true
+	print("player died")
+	visible = false
+	$CollisionShape2D.disabled = true
+	set_physics_process(false)
+	var t = Timer.new()
+	t.one_shot = true
+	t.wait_time = respawn_time
+	t.connect("timeout", Callable(self, "_respawn"))
+	add_child(t)
+	t.start()
+
+func _respawn():
+	current_health = max_health
+	global_position = respawn_position
+	visible = true
+	$CollisionShape2D.disabled = false
+	set_physics_process(true)
+	dead = false
+	print("Player respawned")
+
 
 """func animatePlayer():
 	if direction == Vector2.ZERO:
@@ -110,3 +155,6 @@ func heal(amount: int) -> void:
 
 func _on_attack_timer_timeout() -> void:
 	can_attack = true
+	
+func _on_InvincibilityTimer_timeout() -> void:
+	invincible = false
