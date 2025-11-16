@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+var bullet_path = preload("res://prefabs/Arrow/shoot.tscn")
+
 @onready var idle_sheet := load("res://assets/Units/Blue Units/Archer/Archer_Idle.png")
 @onready var attack_sheet := load("res://assets/Units/Blue Units/Archer/Archer_Shoot.png")
 @onready var run_sheet := load("res://assets/Units/Blue Units/Archer/Archer_Run.png")
@@ -8,7 +10,7 @@ class_name Player
 @onready var ani_player := $AnimationPlayer
 @onready var attack_timer := $AttackTimer
 
-const SPEED : int = 200
+const SPEED : int = 300
 var max_health: float = 100
 var current_health: int = 100
 var damage_output: float = 20
@@ -30,22 +32,36 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	direction = Vector2.ZERO
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up"):
 		direction.y += -movement_speed
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("down"):
 		direction.y += movement_speed
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		direction.x += -movement_speed
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		direction.x += movement_speed
 	direction = direction.normalized()
 
 func _physics_process(_delta: float) -> void:
 	velocity = direction * SPEED
-	animatePlayer()
+	#animatePlayer()
 	move_and_slide()
-	
-func animatePlayer():
+	$bullet_spawn.look_at(get_global_mouse_position())
+	if can_attack:
+		if Input.is_action_just_pressed("shoot"):
+			fire()
+			can_attack = false
+			attack_timer.start()
+
+func fire():
+	var bullet = bullet_path.instantiate()
+	bullet.dir = $bullet_spawn.global_position.angle_to_point(get_global_mouse_position())
+	bullet.pos = $bullet_spawn.global_position
+	bullet.rota = bullet.dir
+	bullet.damage = damage_output
+	get_parent().add_child(bullet)
+
+"""func animatePlayer():
 	if direction == Vector2.ZERO:
 		if can_attack:
 			# I switched to animatedsprite2D's for now so this isnt needed atm, lets wait on most animations
@@ -61,12 +77,8 @@ func animatePlayer():
 			facing_right = false
 		#sprite.texture = run_sheet
 		sprite.play("idle")
-	sprite.flip_h = !facing_right
+	sprite.flip_h = !facing_right """
 	
-func Attack(target_enemy: CharacterBody2D) -> void:
-	var new_arrow: Arrow = arrow_scene.instantiate()
-	new_arrow.target = target_enemy
-	current_scene.add_child(new_arrow)
 
 #for now these calc methods take in a decimal and uses it to 
 #return the percent increase amount that an item would give

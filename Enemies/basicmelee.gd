@@ -7,9 +7,15 @@ class_name basicmelee
 @onready var ani_player := $AnimationPlayer
 @onready var nav_agent := $NavigationAgent2D
 @onready var sprite := $Sprite2D
+
 var player_ref : Player
 var current_state : STATE
-const SPEED := 100
+const SPEED := 250
+
+@export var max_health: int = 50
+var health: int
+
+
 enum STATE {
 	RUN,
 	ATTACK,
@@ -18,6 +24,7 @@ enum STATE {
 
 
 func _ready() -> void:
+	health = max_health
 	player_ref = get_tree().get_first_node_in_group("Player")
 	ani_player.play("run")
 	
@@ -37,8 +44,16 @@ func change_State(new_state:STATE):
 		sprite.texture = idle_sheet
 		
 		
+func take_damage(amount: float) -> void:
+	health -= amount
+	print("Enemy took damage: ", amount, " | HP left: ", health)
+	if health <= 0:
+		die()
 
-
+func die() -> void:
+	print("enemy died")
+	queue_free()
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		ani_player.play("attack")
