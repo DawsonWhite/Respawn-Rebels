@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name basicmelee
-
+signal died
 @onready var idle_sheet := load("res://assets/Units/Red Units/Warrior/Warrior_Idle.png")
 @onready var run_sheet := load("res://assets/Units/Red Units/Warrior/Warrior_Run.png")
 @onready var attack_sheet := load("res://assets/Units/Red Units/Warrior/Warrior_Attack1.png")
@@ -12,8 +12,8 @@ class_name basicmelee
 var player_ref : Player
 var player_in_range: Player = null  
 var current_state : STATE
-const SPEED := 250
-var damage_output: float = 35
+const SPEED := 200
+var damage_output: float = 1
 var already_hit: Array = []
 var can_attack := true
 @export var attack_cooldown := 2.0
@@ -72,6 +72,7 @@ func take_damage(amount: float) -> void:
 
 func die() -> void:
 	print("enemy died")
+	died.emit()
 	queue_free()
 	
 func _on_area_2d_body_entered(body) -> void: #Hitbox entered
