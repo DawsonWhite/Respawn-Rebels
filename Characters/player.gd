@@ -13,11 +13,10 @@ var bullet_path = preload("res://prefabs/Arrow/shoot.tscn")
 var invincible: bool = false
 @onready var inv_timer: Timer = $InvincibilityTimer if has_node("InvincibilityTimer") else null
 
-const SPEED : int = 300
 var max_health: float = 100
 var current_health: int = 100
 var damage_output: float = 20
-var movement_speed: float = 1
+var movement_speed: float = 300
 var direction : Vector2
 var facing_right : bool = true
 @export var can_attack := true
@@ -48,7 +47,7 @@ func _process(_delta: float) -> void:
 	direction = direction.normalized()
 
 func _physics_process(_delta: float) -> void:
-	velocity = direction * SPEED
+	velocity = direction * movement_speed
 	#animatePlayer()
 	move_and_slide()
 	$bullet_spawn.look_at(get_global_mouse_position())

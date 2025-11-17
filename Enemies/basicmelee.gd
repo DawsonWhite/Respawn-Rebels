@@ -12,8 +12,8 @@ class_name basicmelee
 var player_ref : Player
 var player_in_range: Player = null  
 var current_state : STATE
-const SPEED := 250
-var damage_output: float = 35
+const SPEED := 200
+var damage_output: float = 1
 var already_hit: Array = []
 var can_attack := true
 @export var attack_cooldown := 2.0

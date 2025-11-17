@@ -29,6 +29,7 @@ project/assembly_name="Respawn_Rebels"
 Player=""
 MainScene=""
 Enemies=""
+KillZone=""
 
 [input]
 
@@ -68,6 +69,7 @@ right={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Environment"
 2d_physics/layer_4="Projectiles"
+2d_physics/layer_5="Clear"
 
 [rendering]
 

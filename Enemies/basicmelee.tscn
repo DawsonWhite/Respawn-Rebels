@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkpmstqjpnyat"]
 
 [ext_resource type="Script" path="res://Enemies/basicmelee.gd" id="1_id60u"]
-[ext_resource type="Texture2D" uid="uid://cp8tqb7k3buio" path="res://assets/Units/Red Units/Warrior/Warrior_Attack1.png" id="2_m465e"]
+[ext_resource type="Texture2D" uid="uid://6notc0fryf1v" path="res://assets/Units/Red Units/Warrior/Warrior_Idle.png" id="2_77b2y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ihh5"]
 radius = 16.0
@@ -239,7 +239,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_id60u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_m465e")
+texture = ExtResource("2_77b2y")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
