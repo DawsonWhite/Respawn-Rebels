@@ -8,8 +8,8 @@ const flight_speed := 200
 func _ready() -> void:
 	target_coords = target.position
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction = position.direction_to(target_coords)
 	velocity = direction + flight_speed
 	var angle = direction.angle()
-	rotaion = angle
+	rotation = angle

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkpmstqjpnyat"]
 
 [ext_resource type="Script" path="res://Enemies/basicmelee.gd" id="1_id60u"]
-[ext_resource type="Texture2D" uid="uid://6notc0fryf1v" path="res://assets/Units/Red Units/Warrior/Warrior_Idle.png" id="1_itfgq"]
+[ext_resource type="Texture2D" uid="uid://cp8tqb7k3buio" path="res://assets/Units/Red Units/Warrior/Warrior_Attack1.png" id="2_m465e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ihh5"]
 radius = 16.0
@@ -101,6 +101,34 @@ tracks/4/keys = {
 "values": [{
 "args": [-1],
 "method": &"start"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_frame"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_attack_hits"
 }]
 }
 
@@ -203,13 +231,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6glh"]
 radius = 64.0
 
-[node name="Basicmelee" type="CharacterBody2D"]
+[node name="Basicmelee" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 13
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_id60u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_itfgq")
+texture = ExtResource("2_m465e")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -236,4 +266,5 @@ wait_time = 0.8
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
