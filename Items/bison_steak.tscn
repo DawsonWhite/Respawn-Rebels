@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dquq4uaiq5mov"]
 
-[ext_resource type="Script" path="res://Items/bison_steak.gd" id="1_rvb3e"]
+[ext_resource type="Script" uid="uid://bjrdtrn0bmqto" path="res://Items/bison_steak.gd" id="1_rvb3e"]
 [ext_resource type="Texture2D" uid="uid://dy7ydlr18f8bb" path="res://assets/Items/BisonSteakaseprite.png" id="2_ymep6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7udma"]

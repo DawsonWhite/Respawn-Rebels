@@ -69,6 +69,7 @@ tile_map_data = PackedByteArray("AAAaACIAAAAAAAAAAQAaAA8AAAAAAAAAAQAJAC4AAAAAAAA
 
 [node name="Player" parent="." instance=ExtResource("3_xwsv7")]
 position = Vector2(296, 752)
+can_attack = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -119,3 +120,28 @@ collision_mask = 11
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone/Left/Right" groups=["KillZone"]]
 position = Vector2(1824, 768)
 shape = SubResource("RectangleShape2D_mdkq7")
+
+[node name="RewardUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="RewardUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RewardUI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="RewardUI/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="RewardUI/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="RewardUI/Panel/HBoxContainer"]
+layout_mode = 2

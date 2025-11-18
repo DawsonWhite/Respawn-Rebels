@@ -14,7 +14,7 @@ var invincible: bool = false
 @onready var inv_timer: Timer = $InvincibilityTimer if has_node("InvincibilityTimer") else null
 
 var max_health: float = 100
-var current_health: int = 100
+var current_health: float = 100
 var damage_output: float = 20
 var movement_speed: float = 300
 var direction : Vector2
@@ -26,7 +26,6 @@ var facing_right : bool = true
 var dead := false
 var arrow_scene : Resource
 var current_scene : Node2D
-
 
 func _ready() -> void:
 	arrow_scene = load(arrow_scene_string)
@@ -65,10 +64,9 @@ func fire():
 	bullet.damage = damage_output
 	get_parent().add_child(bullet)
 
-func take_damage(amount: float, from_position: Vector2 = Vector2.INF) -> void:
+func take_damage(amount: float, _from_position: Vector2 = Vector2.INF) -> void:
 	if invincible:
 		return
-
 	current_health -= int(amount)
 	print("Player took ", amount, " damage. HP:", current_health)
 	invincible = true
@@ -80,6 +78,7 @@ func take_damage(amount: float, from_position: Vector2 = Vector2.INF) -> void:
 
 	if current_health <= 0:
 		die()
+
 func die() -> void:
 	if dead:
 		return
@@ -134,6 +133,14 @@ func CalculateMaxHealthPercentage(amount) -> float:
 
 func CalculateMaxMovementSpeedPercentage(amount) -> float:
 	return movement_speed * amount
+
+func CalculateMaxAttackSpeedPercentage(amount) -> float:
+	return attack_timer.wait_time * amount
+
+func IncreaseMaxAttackSpeed(amount: float) -> void:
+	attack_timer.wait_time -= amount
+	print("Attack speed is now: ", attack_timer.wait_time)
+
 
 #these methods increase a max stat by a inputted amount for any items
 func IncreaseMaxHealth(amount: float) -> void:
