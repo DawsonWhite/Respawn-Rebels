@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dlfr1ql4kt2a4"]
 
-[ext_resource type="Script" uid="uid://n5d2hq2ywg5e" path="res://Characters/player.gd" id="1_uvkgs"]
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_uvkgs"]
 [ext_resource type="Texture2D" uid="uid://c7yit72o66baw" path="res://assets/Player/DAND.png" id="2_eovys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vb825"]
@@ -117,10 +117,10 @@ step = 0.1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qc5vo"]
 _data = {
-&"RESET": SubResource("Animation_vqrfw"),
-&"attack": SubResource("Animation_eyvko"),
-&"idle": SubResource("Animation_a05sg"),
-&"run": SubResource("Animation_bx1jy")
+"RESET": SubResource("Animation_vqrfw"),
+"attack": SubResource("Animation_eyvko"),
+"idle": SubResource("Animation_a05sg"),
+"run": SubResource("Animation_bx1jy")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -143,7 +143,7 @@ shape = SubResource("CapsuleShape2D_eovys")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_qc5vo")
+"": SubResource("AnimationLibrary_qc5vo")
 }
 
 [node name="AttackTimer" type="Timer" parent="."]
