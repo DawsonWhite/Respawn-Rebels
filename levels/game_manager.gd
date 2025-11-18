@@ -14,19 +14,16 @@ func _ready():
 
 func start_wave():
 	print("Starting Wave ", current_wave)
-
 	enemies_spawned = 0
 	enemies_killed = 0
-
 	enemies_required = enemies_per_wave + (current_wave - 1) * wave_Scalar
-
 	spawn_wave(enemies_required)
-	
+
 
 func spawn_wave(amount: int):
 	for i in amount:
 		spawn_enemy()
-		
+
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dquq4uaiq5mov" path="res://Items/bison_steak.tscn" id="6_pdpul"]
 [ext_resource type="PackedScene" uid="uid://cs0ff1auhbdpw" path="res://Items/magic_mushroom.tscn" id="7_8hd6v"]
 [ext_resource type="PackedScene" uid="uid://cfqkasvjujbgs" path="res://Items/jet_fuel.tscn" id="8_omn1t"]
-[ext_resource type="Script" path="res://levels/game_manager.gd" id="9_6qus5"]
+[ext_resource type="Script" uid="uid://ch7yq328tdyd7" path="res://levels/game_manager.gd" id="9_6qus5"]
 [ext_resource type="PackedScene" uid="uid://1b8f3qjgfq26" path="res://Items/soldier_syringe.tscn" id="9_lf3p4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_np1u8"]
@@ -119,3 +119,28 @@ collision_mask = 11
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone/Left/Right" groups=["KillZone"]]
 position = Vector2(1824, 768)
 shape = SubResource("RectangleShape2D_mdkq7")
+
+[node name="RewardUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="RewardUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RewardUI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="RewardUI/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="RewardUI/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="RewardUI/Panel/HBoxContainer"]
+layout_mode = 2
