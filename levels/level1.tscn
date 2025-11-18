@@ -69,7 +69,6 @@ tile_map_data = PackedByteArray("AAAaACIAAAAAAAAAAQAaAA8AAAAAAAAAAQAJAC4AAAAAAAA
 
 [node name="Player" parent="." instance=ExtResource("3_xwsv7")]
 position = Vector2(296, 752)
-can_attack = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
