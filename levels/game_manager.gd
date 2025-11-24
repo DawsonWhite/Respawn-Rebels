@@ -30,7 +30,6 @@ func spawn_enemy():
 	# choose a random spawn point
 	var sp = spawn_points.pick_random()
 	enemy.global_position = sp.global_position
-
 	# add to scene
 	enemy_container.add_child(enemy)
 

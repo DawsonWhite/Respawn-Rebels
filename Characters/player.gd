@@ -30,21 +30,35 @@ var current_scene : Node2D
 func _ready() -> void:
 	arrow_scene = load(arrow_scene_string)
 	current_scene = get_tree().get_first_node_in_group("MainScene")
-
+	#print("current health ", current_health)
+	#print("max health ", max_health)
+	#take_damage(20)
+	#print("current health ", current_health)
+	#print("max health ", max_health)
+	#print("is player visible? ", visible)
+	#print("does player have collision? ", $CollisionShape2D.disabled)
+	#print("is player dead? ", dead)
+	#die()
+	#print("is player visible? ", visible)
+	#print("does player have collision? ", $CollisionShape2D.disabled)
+	#print("is player dead? ", dead)
 
 
 func _process(_delta: float) -> void:
 	direction = Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		direction.y += -movement_speed
+		#print("direction was increased upwards")
 	if Input.is_action_pressed("down"):
 		direction.y += movement_speed
+		#print("direction was increased downwards")
 	if Input.is_action_pressed("left"):
 		direction.x += -movement_speed
+		#print("direction was increased leftwards")
 	if Input.is_action_pressed("right"):
 		direction.x += movement_speed
+		#print("direction was increased rightwards")
 	direction = direction.normalized()
-
 func _physics_process(_delta: float) -> void:
 	velocity = direction * movement_speed
 	#animatePlayer()
@@ -58,6 +72,7 @@ func _physics_process(_delta: float) -> void:
 
 func fire():
 	var bullet = bullet_path.instantiate()
+	print(get_angle_to(get_global_mouse_position()))
 	bullet.dir = $bullet_spawn.global_position.angle_to_point(get_global_mouse_position())
 	bullet.pos = $bullet_spawn.global_position
 	bullet.rota = bullet.dir
@@ -75,7 +90,6 @@ func take_damage(amount: float, _from_position: Vector2 = Vector2.INF) -> void:
 	else:
 		await get_tree().create_timer(invincible_time).timeout
 		invincible = false
-
 	if current_health <= 0:
 		die()
 
@@ -104,25 +118,6 @@ func _respawn():
 	print("Player respawned")
 
 
-"""func animatePlayer():
-	if direction == Vector2.ZERO:
-		if can_attack:
-			# I switched to animatedsprite2D's for now so this isnt needed atm, lets wait on most animations
-			#sprite.texture = attack_sheet
-			sprite.play("idle")
-		else:
-			#sprite.texture = idle_sheet
-			sprite.play("idle")
-	else:
-		if direction.x >= 0:
-			facing_right = true
-		else:
-			facing_right = false
-		#sprite.texture = run_sheet
-		sprite.play("idle")
-	sprite.flip_h = !facing_right """
-	
-
 #for now these calc methods take in a decimal and uses it to 
 #return the percent increase amount that an item would give
 func CalculateMaxDamagePercentage(amount) -> float:
@@ -146,7 +141,7 @@ func IncreaseMaxAttackSpeed(amount: float) -> void:
 func IncreaseMaxHealth(amount: float) -> void:
 	max_health = max_health + amount
 	print("Max Health  is now ", max_health)
-
+	#print("current health is ", current_health)
 func IncreaseMaxDamage(amount: float) -> void:
 	damage_output = damage_output + amount
 	print("Max Damage Output is now ", damage_output)

@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
+		print("arrow does damage to enemy")
 		body.take_damage(damage)
 		queue_free()
 

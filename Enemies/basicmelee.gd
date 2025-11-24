@@ -56,11 +56,11 @@ func try_attack():
 	add_child(t)
 	t.start()
 
-func change_State(new_state:STATE): 
-	if new_state == STATE.RUN:
-		sprite.play("walk_animation")
-	elif new_state == STATE.ATTACK:
-		sprite.play("attack_animation")
+#func change_State(new_state:STATE): 
+	#if new_state == STATE.RUN:
+		#sprite.play("walk_animation")
+	#elif new_state == STATE.ATTACK:
+		#sprite.play("attack_animation")
 
 func take_damage(amount: float) -> void:
 	health -= amount
@@ -83,11 +83,11 @@ func _on_area_2d_body_entered(body) -> void: #Hitbox entered
 func _on_area_2d_body_exited(body) -> void: #Hitbox exited
 	if body == player_in_range:
 		player_in_range = null
-		change_State(STATE.RUN)
+		#change_State(STATE.RUN)
 		sprite.play("walk_animation")
 
 func start_attack():
-	change_State(STATE.ATTACK)
+	#change_State(STATE.ATTACK)
 	sprite.play("attack_animation")
 
 
